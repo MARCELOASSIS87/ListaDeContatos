@@ -49,18 +49,18 @@ class ContatoActivity : BaseActivity() {
             telefone
         )
         progress.visibility = View.VISIBLE
-        Thread(Runnable {
+        Thread {
             Thread.sleep(1500)
-            if(idContato == -1) {
+            if (idContato == -1) {
                 ContatoApplication.instance.helperDB?.salvarContato(contato)
-            }else{
+            } else {
                 ContatoApplication.instance.helperDB?.updateContato(contato)
             }
             runOnUiThread {
                 progress.visibility = View.GONE
                 finish()
             }
-        }).start()
+        }.start()
     }
 
     fun onClickExcluirContato(view: View) {
